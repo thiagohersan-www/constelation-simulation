@@ -7,7 +7,7 @@ class Particle {
     this.v = random(1, 3);
     this.highlight = false;
     this.size = random(4, 8);
-    this.MIN_DIST = 64;
+    this.MIN_DIST = random(40, 80);
   }
 
   move() {
@@ -26,11 +26,9 @@ class Particle {
       fill(255, 200);
       ellipse(this.x, this.y, this.size, this.size);
     } else {
-      fill(100);
+      fill(255, 100);
       ellipse(this.x, this.y, this.size, this.size);
     }
-
-    
   }
 
   checkCollision(others) {
