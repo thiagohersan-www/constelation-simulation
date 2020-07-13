@@ -17,10 +17,36 @@
         padding: 0;
       }
       canvas {
-        background-image: linear-gradient(0deg, purple, blue);
+        background: linear-gradient(180deg, black, black, midnightblue, darkblue, purple, deeppink);
+        background-size: 100% 400%;
+        -webkit-animation: AnimationName 90s ease infinite;
+        -moz-animation: AnimationName 90s ease infinite;
+        -o-animation: AnimationName 90s ease infinite;
+        animation: AnimationName 90s ease infinite;
       }
+
+      @-webkit-keyframes AnimationName {
+        0%{background-position:0% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:0% 0%}
+      }
+      @-moz-keyframes AnimationName {
+        0%{background-position:0% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:0% 0%}
+      }
+      @-o-keyframes AnimationName {
+        0%{background-position:0% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:0% 0%}
+      }
+      @keyframes AnimationName {
+        0%{background-position:0% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:0% 0%}
+      }
+
     </style>
   </head>
-  <body>
-  </body>
+  <body></body>
 </html>
