@@ -16,7 +16,7 @@ class Particle {
     this.y = this.r * sin(this.a);
   }
 
-  render() {
+  renderRaw() {
     noStroke();
     if (this.highlight) {
       fill(255, 40);
@@ -31,7 +31,28 @@ class Particle {
     }
   }
 
-  checkCollision(others) {
+  renderGraphic(pg) {
+    pg.noStroke();
+    if (this.highlight) {
+      pg.fill(255, 40);
+      pg.ellipse(this.x, this.y, 3 * this.size, 3 * this.size);
+      pg.fill(255, 70);
+      pg.ellipse(this.x, this.y, 2 * this.size, 2 * this.size);
+      pg.fill(255, 200);
+      pg.ellipse(this.x, this.y, this.size, this.size);
+    } else {
+      pg.fill(255, 100);
+      pg.ellipse(this.x, this.y, this.size, this.size);
+    }
+  }
+
+  render(pg) {
+    if(pg) this.renderGraphic(pg);
+    else this.renderRaw();
+    
+  }
+
+  checkCollision(others, pg) {
     this.highlight = false;
     for (let other of others) {
       if (other.userData) {
@@ -41,7 +62,8 @@ class Particle {
         let d = dist(this.x, this.y, other.x, other.y);
         if (d < this.MIN_DIST) {
           this.highlight = true;
-          line(this.x, this.y, other.x, other.y);
+          if(pg) pg.line(this.x, this.y, other.x, other.y);
+          else line(this.x, this.y, other.x, other.y);
         }
       }
     }
